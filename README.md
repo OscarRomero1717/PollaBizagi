@@ -1,5 +1,8 @@
 # Polla Mundialista
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=OscarRomero1717_PollaBizagi&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=OscarRomero1717_PollaBizagi)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=OscarRomero1717_PollaBizagi&metric=coverage)](https://sonarcloud.io/summary/new_code?id=OscarRomero1717_PollaBizagi)
+
 Aplicación web fullstack para registro de predicciones deportivas, cálculo automático de puntajes y ranking de participantes.
 
 **Repositorio:** [github.com/OscarRomero1717/PollaBizagi](https://github.com/OscarRomero1717/PollaBizagi)
@@ -95,7 +98,10 @@ PollaBizagi/
 │   ├── polla-web/           # SPA Angular 17
 │   └── docs/
 │       └── azure-swa-setup.md
-└── .github/workflows/       # CI/CD Azure Static Web Apps
+├── docs/
+│   └── sonarcloud-setup.md  # Guía SonarCloud
+├── sonar-project.properties # Config análisis SonarCloud
+└── .github/workflows/       # CI/CD SWA + SonarCloud
 ```
 
 ## Estado del proyecto
@@ -112,6 +118,7 @@ PollaBizagi/
 | Diagrama C4 | 040 | ✅ Completado |
 | AI_LOG final | 041 | ⏳ Pendiente |
 | Script de demo | 042 | ⏳ Pendiente |
+| SonarCloud | — | ✅ Configurado (activar token en GitHub) |
 
 ## Documentación
 
@@ -122,6 +129,7 @@ PollaBizagi/
 | [backend/docs/architecture.md](backend/docs/architecture.md) | Arquitectura C4 + secuencia scoring  |
 | [backend/docs/database.md](backend/docs/database.md) | Modelo de datos y tablas |
 | [backend/AI_LOG.md](backend/AI_LOG.md) | Registro de uso de IA en el desarrollo |
+| [docs/sonarcloud-setup.md](docs/sonarcloud-setup.md) | Análisis de calidad con SonarCloud |
 
 ## Licencia
 
