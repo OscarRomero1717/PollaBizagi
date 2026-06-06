@@ -46,3 +46,14 @@
 .state--error {
   color: #b3261e;
 }
+
+@media (max-width: 640px) {
+  .my-predictions-page__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .summary {
+    text-align: left;
+  }
+}

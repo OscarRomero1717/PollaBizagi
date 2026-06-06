@@ -1,5 +1,5 @@
-<div class="table-wrap">
-  <table class="history-table">
+<div class="table-wrap table-wrap--responsive">
+  <table class="history-table responsive-table">
     <thead>
       <tr>
         <th>Partido</th>
@@ -12,17 +12,17 @@
     <tbody>
       @for (item of predictions; track item.matchId) {
         <tr>
-          <td>{{ item.homeTeam }} vs {{ item.awayTeam }}</td>
-          <td>{{ item.kickoffUtc | date: 'shortDate' : 'UTC' }}</td>
-          <td>{{ item.predictedHomeGoals }} - {{ item.predictedAwayGoals }}</td>
-          <td>
+          <td data-label="Partido">{{ item.homeTeam }} vs {{ item.awayTeam }}</td>
+          <td data-label="Fecha">{{ item.kickoffUtc | date: 'shortDate' : 'UTC' }}</td>
+          <td data-label="Predicción">{{ item.predictedHomeGoals }} - {{ item.predictedAwayGoals }}</td>
+          <td data-label="Resultado oficial">
             @if (hasOfficialResult(item)) {
               {{ item.officialHomeGoals }} - {{ item.officialAwayGoals }}
             } @else {
               Pendiente
             }
           </td>
-          <td>
+          <td data-label="Puntos">
             <span [class.points-scored]="hasOfficialResult(item)">
               {{ pointsLabel(item) }}
             </span>

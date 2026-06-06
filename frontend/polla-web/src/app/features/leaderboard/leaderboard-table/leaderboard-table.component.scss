@@ -39,3 +39,10 @@
   font-weight: 700;
   color: var(--primary-color);
 }
+
+@media (max-width: 640px) {
+  .leaderboard-table tbody tr.is-current td[data-label='Participante'] {
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+}

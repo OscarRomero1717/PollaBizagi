@@ -46,3 +46,29 @@
   color: #b3261e;
   font-size: 0.85rem;
 }
+
+@media (max-width: 640px) {
+  .result-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .result-form label {
+    width: 100%;
+  }
+
+  .result-form input {
+    width: 100%;
+    min-height: 2.75rem;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .result-form button {
+    width: 100%;
+    min-height: 2.75rem;
+  }
+}

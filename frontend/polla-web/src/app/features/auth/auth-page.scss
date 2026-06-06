@@ -97,3 +97,15 @@ button[type='submit']:disabled {
 .alt-link a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 640px) {
+  .auth-card {
+    width: 100%;
+    max-width: none;
+    padding: 1.25rem 1rem;
+  }
+
+  button[type='submit'] {
+    min-height: 2.75rem;
+  }
+}
