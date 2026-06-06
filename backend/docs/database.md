@@ -17,6 +17,7 @@ Server=(localdb)\mssqllocaldb;Database=PollaMundialista;Trusted_Connection=True;
 
 ---
 
+
 ## Diagrama de tablas (negocio + Identity)
 
 ```mermaid

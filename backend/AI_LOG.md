@@ -153,3 +153,11 @@ Registro del uso de herramientas de IA durante el desarrollo (enfoque AI-First).
 **Output IA:** `AuthService` en Application; `IdentityAccountService` con UserManager; mensaje genérico en login fallido.
 **Validación humana:** Application no referencia ASP.NET Identity directamente; email duplicado → `DUPLICATE_EMAIL`.
 **Decisión:** Aceptado
+
+### [2026-06-05] — DevOps / Docs
+
+**Contexto:** Tarea 035 — Azure SQL y connection string local/cloud.
+**Prompt resumido:** Plantilla `appsettings.Production.json` sin secretos, script de migraciones Azure, guía Portal y README BD.
+**Output IA:** `setup-azure-database.ps1`, `docs/azure-sql-setup.md`, actualización `database.md` y README backend.
+**Validación humana:** Provisionamiento Azure manual en Portal; migración/seed verificados por el desarrollador con connection string real (no en Git).
+**Decisión:** Aceptado
