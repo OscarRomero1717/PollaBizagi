@@ -22,7 +22,7 @@ App local: `http://localhost:4200`
 | Archivo | `apiUrl` |
 |---------|----------|
 | `src/environments/environment.ts` | `http://localhost:5299` (desarrollo) |
-| `src/environments/environment.prod.ts` | URL de API en producción (pendiente deploy) |
+| `src/environments/environment.prod.ts` | `https://pollabizagi.onrender.com` (producción) |
 
 ## Estado
 
@@ -34,3 +34,4 @@ App local: `http://localhost:4200`
 - ✅ Tarea 032 — MyPredictionsPage
 - ✅ Tarea 033 — LeaderboardPage
 - ✅ Tarea 034 — AdminResultsPage
+- ⏳ Tarea 037 — Deploy Azure Static Web Apps (ver [docs/azure-swa-setup.md](docs/azure-swa-setup.md))
