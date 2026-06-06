@@ -1,0 +1,99 @@
+.auth-card {
+  max-width: 24rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.auth-card h2 {
+  margin: 0 0 0.25rem;
+}
+
+.auth-card .subtitle {
+  margin: 0 0 1.25rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.field input {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  font: inherit;
+}
+
+.field input:focus {
+  outline: 2px solid #0b57d0;
+  border-color: #0b57d0;
+}
+
+.field-error {
+  color: #b3261e;
+  font-size: 0.85rem;
+}
+
+.form-error,
+.form-success {
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.form-error {
+  background: #fdecea;
+  color: #8c1d18;
+}
+
+.form-success {
+  background: #e7f5ec;
+  color: #1b5e20;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+button[type='submit'] {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 0.35rem;
+  background: #0b57d0;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.alt-link {
+  font-size: 0.9rem;
+}
+
+.alt-link a {
+  color: #0b57d0;
+  text-decoration: none;
+}
+
+.alt-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,34 @@
+<div class="table-wrap">
+  <table class="history-table">
+    <thead>
+      <tr>
+        <th>Partido</th>
+        <th>Fecha</th>
+        <th>Predicción</th>
+        <th>Resultado oficial</th>
+        <th>Puntos</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of predictions; track item.matchId) {
+        <tr>
+          <td>{{ item.homeTeam }} vs {{ item.awayTeam }}</td>
+          <td>{{ item.kickoffUtc | date: 'shortDate' : 'UTC' }}</td>
+          <td>{{ item.predictedHomeGoals }} - {{ item.predictedAwayGoals }}</td>
+          <td>
+            @if (hasOfficialResult(item)) {
+              {{ item.officialHomeGoals }} - {{ item.officialAwayGoals }}
+            } @else {
+              Pendiente
+            }
+          </td>
+          <td>
+            <span [class.points-scored]="hasOfficialResult(item)">
+              {{ pointsLabel(item) }}
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,18 @@
+@if (errorMessage) {
+  <p class="form-error">{{ errorMessage }}</p>
+}
+
+<form class="result-form" [formGroup]="form" (ngSubmit)="submit()">
+  <label>
+    Local
+    <input type="number" min="0" formControlName="homeGoals" />
+  </label>
+  <span class="separator">-</span>
+  <label>
+    Visitante
+    <input type="number" min="0" formControlName="awayGoals" />
+  </label>
+  <button type="submit" [disabled]="submitting">
+    {{ submitting ? 'Guardando...' : (isScored ? 'Actualizar resultado' : 'Publicar resultado') }}
+  </button>
+</form>

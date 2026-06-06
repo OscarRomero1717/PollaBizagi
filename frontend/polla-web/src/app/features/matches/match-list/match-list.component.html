@@ -1,0 +1,36 @@
+<div class="match-list">
+  @for (match of matches; track match.id) {
+    <article class="match-card">
+      <div class="match-card__header">
+        <div>
+          <h3>{{ match.homeTeam }} vs {{ match.awayTeam }}</h3>
+          <p class="kickoff">
+            {{ match.kickoffUtc | date: 'medium' : 'UTC' }} UTC
+          </p>
+        </div>
+        <span class="status" [class]="statusClass(match.status)">
+          {{ statusLabel(match.status) }}
+        </span>
+      </div>
+
+      @if (match.status === MatchStatus.Scored) {
+        <p class="official-result">
+          Resultado oficial:
+          <strong>{{ match.officialHomeGoals }} - {{ match.officialAwayGoals }}</strong>
+        </p>
+      }
+
+      @if (match.hasPrediction && match.myPrediction) {
+        <p class="my-prediction">
+          Tu predicción:
+          <strong>{{ match.myPrediction.homeGoals }} - {{ match.myPrediction.awayGoals }}</strong>
+          @if (match.status === MatchStatus.Scored) {
+            <span class="points">({{ match.myPrediction.pointsAwarded }} pts)</span>
+          }
+        </p>
+      }
+
+      <app-prediction-form [match]="match" (saved)="predictionSaved.emit()" />
+    </article>
+  }
+</div>

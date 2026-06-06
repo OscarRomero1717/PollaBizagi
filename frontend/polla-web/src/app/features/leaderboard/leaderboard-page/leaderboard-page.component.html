@@ -1,0 +1,25 @@
+<section class="leaderboard-page">
+  <header class="leaderboard-page__header">
+    <h2>Leaderboard</h2>
+    <p>Ranking global ordenado por puntos totales y marcadores exactos.</p>
+  </header>
+
+  @if (loading) {
+    <p class="state">Cargando ranking...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="state state--error">{{ errorMessage }}</p>
+  }
+
+  @if (!loading && !errorMessage && entries.length === 0) {
+    <p class="state">Aún no hay participantes en el ranking.</p>
+  }
+
+  @if (!loading && entries.length > 0) {
+    <app-leaderboard-table
+      [entries]="entries"
+      [highlightName]="currentDisplayName()"
+    />
+  }
+</section>

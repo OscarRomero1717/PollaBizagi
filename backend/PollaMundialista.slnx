@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Polla.Api/Polla.Api.csproj" />
+    <Project Path="src/Polla.Application/Polla.Application.csproj" />
+    <Project Path="src/Polla.Domain/Polla.Domain.csproj" />
+    <Project Path="src/Polla.Infrastructure/Polla.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Polla.Domain.Tests/Polla.Domain.Tests.csproj" />
+  </Folder>
+</Solution>

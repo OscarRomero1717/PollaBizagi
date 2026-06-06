@@ -1,0 +1,22 @@
+<div class="table-wrap">
+  <table class="leaderboard-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Participante</th>
+        <th>Puntos</th>
+        <th>Exactos</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (entry of entries; track entry.rank) {
+        <tr [class.is-current]="isCurrentUser(entry)">
+          <td>{{ entry.rank }}</td>
+          <td>{{ entry.displayName }}</td>
+          <td>{{ entry.totalPoints }}</td>
+          <td>{{ entry.exactHits }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,48 @@
+.result-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.5rem 0.75rem;
+}
+
+.result-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-color);
+}
+
+.result-form input {
+  width: 4.5rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.35rem;
+}
+
+.result-form button {
+  padding: 0.45rem 0.85rem;
+  border: none;
+  border-radius: 0.35rem;
+  background: #b26a00;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.result-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.separator {
+  padding-bottom: 0.45rem;
+  font-weight: 700;
+}
+
+.form-error {
+  margin: 0 0 0.5rem;
+  color: #b3261e;
+  font-size: 0.85rem;
+}

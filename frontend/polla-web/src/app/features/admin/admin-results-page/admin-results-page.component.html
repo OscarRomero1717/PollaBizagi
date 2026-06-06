@@ -1,0 +1,29 @@
+<section class="admin-results-page">
+  <header class="admin-results-page__header">
+    <h2>Admin — Resultados oficiales</h2>
+    <p>Publica o corrige el marcador oficial de cada partido para recalcular puntos.</p>
+  </header>
+
+  @if (successMessage) {
+    <p class="banner banner--success">{{ successMessage }}</p>
+  }
+
+  @if (loading) {
+    <p class="state">Cargando partidos...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="state state--error">{{ errorMessage }}</p>
+  }
+
+  @if (!loading && !errorMessage && matches.length === 0) {
+    <p class="state">No hay partidos disponibles.</p>
+  }
+
+  @if (!loading && matches.length > 0) {
+    <app-admin-match-list
+      [matches]="matches"
+      (resultSaved)="onResultSaved($event)"
+    />
+  }
+</section>

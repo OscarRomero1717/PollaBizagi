@@ -1,0 +1,17 @@
+.matches-page__header h2 {
+  margin: 0 0 0.35rem;
+}
+
+.matches-page__header p {
+  margin: 0 0 1.25rem;
+  color: var(--muted-color);
+}
+
+.state {
+  margin: 0;
+  color: var(--muted-color);
+}
+
+.state--error {
+  color: #b3261e;
+}

@@ -1,0 +1,33 @@
+<section class="my-predictions-page">
+  <header class="my-predictions-page__header">
+    <div>
+      <h2>Mis predicciones</h2>
+      <p>Historial de marcadores predichos y puntos obtenidos.</p>
+    </div>
+    @if (predictions.length > 0) {
+      <div class="summary">
+        <span class="summary__label">Puntos totales</span>
+        <strong class="summary__value">{{ totalPoints }}</strong>
+      </div>
+    }
+  </header>
+
+  @if (loading) {
+    <p class="state">Cargando predicciones...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="state state--error">{{ errorMessage }}</p>
+  }
+
+  @if (!loading && !errorMessage && predictions.length === 0) {
+    <p class="state">
+      Aún no tienes predicciones.
+      <a routerLink="/matches">Ir a partidos</a>
+    </p>
+  }
+
+  @if (!loading && predictions.length > 0) {
+    <app-prediction-history-table [predictions]="predictions" />
+  }
+</section>

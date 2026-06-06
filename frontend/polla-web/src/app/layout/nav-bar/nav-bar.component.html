@@ -1,0 +1,33 @@
+<header class="nav-bar">
+  <div class="nav-bar__inner">
+    <a class="brand" routerLink="/matches">Polla Mundialista</a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      @for (link of mainLinks; track link.path) {
+        <a
+          class="nav-link"
+          [routerLink]="link.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: !!link.exact }"
+        >
+          {{ link.label }}
+        </a>
+      }
+
+      @if (authService.isAdmin()) {
+        <a
+          class="nav-link nav-link--admin"
+          [routerLink]="adminLink.path"
+          routerLinkActive="is-active"
+        >
+          {{ adminLink.label }}
+        </a>
+      }
+    </nav>
+
+    <div class="session">
+      <span class="session__name">{{ authService.displayName() }}</span>
+      <button type="button" class="session__logout" (click)="logout()">Salir</button>
+    </div>
+  </div>
+</header>

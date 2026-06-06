@@ -1,0 +1,25 @@
+<div class="admin-match-list">
+  @for (match of matches; track match.id) {
+    <article class="admin-match-card">
+      <div class="admin-match-card__header">
+        <div>
+          <h3>{{ match.homeTeam }} vs {{ match.awayTeam }}</h3>
+          <p class="kickoff">{{ match.kickoffUtc | date: 'medium' : 'UTC' }} UTC</p>
+        </div>
+        <span class="status">{{ statusLabel(match.status) }}</span>
+      </div>
+
+      @if (match.status === MatchStatus.Scored) {
+        <p class="current-result">
+          Resultado actual:
+          <strong>{{ match.officialHomeGoals }} - {{ match.officialAwayGoals }}</strong>
+        </p>
+      }
+
+      <app-official-result-form
+        [match]="match"
+        (saved)="resultSaved.emit($event)"
+      />
+    </article>
+  }
+</div>

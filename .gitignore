@@ -1,0 +1,7 @@
+# Visual Studio (caché en raíz del monorepo)
+.vs/
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini

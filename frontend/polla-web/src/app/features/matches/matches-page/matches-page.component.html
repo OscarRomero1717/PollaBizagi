@@ -1,0 +1,22 @@
+<section class="matches-page">
+  <header class="matches-page__header">
+    <h2>Partidos</h2>
+    <p>Registra o actualiza tus predicciones antes del inicio de cada partido.</p>
+  </header>
+
+  @if (loading) {
+    <p class="state">Cargando partidos...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="state state--error">{{ errorMessage }}</p>
+  }
+
+  @if (!loading && !errorMessage && matches.length === 0) {
+    <p class="state">No hay partidos disponibles.</p>
+  }
+
+  @if (!loading && matches.length > 0) {
+    <app-match-list [matches]="matches" (predictionSaved)="loadMatches()" />
+  }
+</section>
