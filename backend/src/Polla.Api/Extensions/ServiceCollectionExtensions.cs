@@ -67,7 +67,7 @@ public static class ServiceCollectionExtensions
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "Polla Mundialista API",
-                Version = "v1",
+                Version = "v2",
                 Description = "API para predicciones deportivas y ranking"
             });
 
