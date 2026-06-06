@@ -34,6 +34,16 @@ Despliegue del frontend Angular con CI/CD desde GitHub.
 
 > Angular 17+ genera salida en `dist/polla-web/browser`. Si el deploy falla por ruta, prueba `dist/polla-web`.
 
+### Corregir workflow si Azure generó rutas incorrectas
+
+Edita `.github/workflows/azure-static-web-apps-*.yml`:
+
+```yaml
+app_location: "frontend/polla-web"
+output_location: "dist/polla-web/browser"
+app_build_command: "npm install && npm run build"
+```
+
 3. **Revisar y crear** → esperar workflow en GitHub
 
 ---
