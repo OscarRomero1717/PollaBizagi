@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ApiErrorResponse } from '../models/api-error.model';
+import { correlationIdHeader } from '../interceptors/correlation.interceptor';
 
 export function getHttpErrorMessage(error: unknown, fallback: string): string {
   if (!(error instanceof HttpErrorResponse)) {
@@ -7,14 +8,18 @@ export function getHttpErrorMessage(error: unknown, fallback: string): string {
   }
 
   const body = error.error as ApiErrorResponse | string | null;
+  let message = fallback;
 
   if (body && typeof body === 'object' && 'message' in body && body.message) {
-    return body.message;
+    message = body.message;
+  } else if (typeof body === 'string' && body.trim()) {
+    message = body;
   }
 
-  if (typeof body === 'string' && body.trim()) {
-    return body;
+  const correlationId = error.headers.get(correlationIdHeader);
+  if (correlationId) {
+    return `${message} (Ref: ${correlationId})`;
   }
 
-  return fallback;
+  return message;
 }

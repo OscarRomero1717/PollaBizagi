@@ -32,10 +32,27 @@ public class ExceptionHandlingMiddleware
     {
         var (statusCode, code, message) = MapException(exception);
 
+        var correlationId = context.Items.TryGetValue(CorrelationIdMiddleware.HeaderName, out var value)
+            ? value?.ToString()
+            : null;
+
         if (statusCode >= (int)HttpStatusCode.InternalServerError)
-            _logger.LogError(exception, "Unhandled exception: {Message}", exception.Message);
+        {
+            _logger.LogError(
+                exception,
+                "Unhandled exception ({CorrelationId}): {Message}",
+                correlationId,
+                exception.Message);
+        }
         else
-            _logger.LogWarning(exception, "Handled exception: {Code} — {Message}", code, message);
+        {
+            _logger.LogWarning(
+                exception,
+                "Handled exception ({CorrelationId}): {Code} — {Message}",
+                correlationId,
+                code,
+                message);
+        }
 
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = statusCode;

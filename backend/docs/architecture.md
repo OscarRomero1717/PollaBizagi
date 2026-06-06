@@ -207,7 +207,19 @@ sequenceDiagram
 
 ---
 
-## 8. Decisiones arquitectónicas relevantes
+## 8. Observabilidad (costo $0)
+
+| Pieza | Implementación |
+|-------|----------------|
+| Logs estructurados | Serilog JSON → stdout → Render Logs |
+| Correlation ID | `X-Correlation-Id` en request/response y logs |
+| Health | `GET /health` (liveness), `GET /health/ready` (API + SQL) |
+
+Detalle operativo: [docs/observability.md](../../docs/observability.md).
+
+---
+
+## 9. Decisiones arquitectónicas relevantes
 
 | Decisión | Justificación |
 |----------|---------------|

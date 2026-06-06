@@ -2,6 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Polla.Api.Middleware;
 using Polla.Infrastructure.Identity;
 
 namespace Polla.Api.Extensions;
@@ -51,13 +52,15 @@ public static class ServiceCollectionExtensions
                 {
                     policy.SetIsOriginAllowed(IsLocalDevelopmentOrigin)
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
+                        .AllowAnyMethod()
+                        .WithExposedHeaders(CorrelationIdMiddleware.HeaderName);
                 }
                 else
                 {
                     policy.WithOrigins(allowedOrigins)
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
+                        .AllowAnyMethod()
+                        .WithExposedHeaders(CorrelationIdMiddleware.HeaderName);
                 }
             });
         });
