@@ -6,7 +6,8 @@ import {
   CreatePredictionRequest,
   MyPredictionsResponse,
   PredictionResponse,
-  UpdatePredictionRequest
+  UpdatePredictionRequest,
+  UserPredictionsResponse
 } from '../models/prediction.models';
 
 @Injectable({ providedIn: 'root' })
@@ -33,6 +34,12 @@ export class PredictionService {
   getMyPredictions(): Observable<MyPredictionsResponse> {
     return this.http.get<MyPredictionsResponse>(
       `${environment.apiUrl}/api/predictions/me`
+    );
+  }
+
+  getUserPredictions(userId: string): Observable<UserPredictionsResponse> {
+    return this.http.get<UserPredictionsResponse>(
+      `${environment.apiUrl}/api/predictions/users/${userId}`
     );
   }
 }

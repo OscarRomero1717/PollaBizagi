@@ -57,4 +57,15 @@ public class PredictionsController : ControllerBase
         var result = await _predictionService.GetMyPredictionsAsync(cancellationToken);
         return Ok(result);
     }
+
+    [HttpGet("users/{userId:guid}")]
+    [ProducesResponseType(typeof(UserPredictionsResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<UserPredictionsResponseDto>> GetUserPredictions(
+        Guid userId,
+        CancellationToken cancellationToken)
+    {
+        var result = await _predictionService.GetUserPredictionsAsync(userId, cancellationToken);
+        return Ok(result);
+    }
 }

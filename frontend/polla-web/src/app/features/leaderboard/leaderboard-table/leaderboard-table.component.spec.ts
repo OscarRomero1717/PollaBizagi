@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { LeaderboardTableComponent } from './leaderboard-table.component';
 
 describe('LeaderboardTableComponent', () => {
@@ -6,13 +7,14 @@ describe('LeaderboardTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LeaderboardTableComponent]
+      imports: [LeaderboardTableComponent, RouterTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(LeaderboardTableComponent);
     fixture.componentInstance.entries = [
       {
         rank: 1,
+        userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
         displayName: 'Usuario Demo',
         totalPoints: 3,
         exactHits: 1

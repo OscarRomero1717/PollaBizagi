@@ -40,3 +40,9 @@ export interface MyPredictionItem {
 export interface MyPredictionsResponse {
   predictions: MyPredictionItem[];
 }
+
+export interface UserPredictionsResponse {
+  userId: string;
+  displayName: string;
+  predictions: MyPredictionItem[];
+}

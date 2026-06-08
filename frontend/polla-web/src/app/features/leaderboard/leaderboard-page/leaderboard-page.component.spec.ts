@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 import { LeaderboardPageComponent } from './leaderboard-page.component';
 import { LeaderboardService } from '../../../core/services/leaderboard.service';
@@ -16,7 +17,7 @@ describe('LeaderboardPageComponent', () => {
     });
 
     await TestBed.configureTestingModule({
-      imports: [LeaderboardPageComponent],
+      imports: [LeaderboardPageComponent, RouterTestingModule],
       providers: [
         { provide: LeaderboardService, useValue: leaderboardService },
         { provide: AuthService, useValue: authService }
@@ -33,6 +34,7 @@ describe('LeaderboardPageComponent', () => {
         entries: [
           {
             rank: 1,
+            userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
             displayName: 'Usuario Demo',
             totalPoints: 3,
             exactHits: 1

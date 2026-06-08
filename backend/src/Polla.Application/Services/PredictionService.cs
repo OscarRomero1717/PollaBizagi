@@ -12,17 +12,20 @@ public class PredictionService : IPredictionService
 {
     private readonly IMatchRepository _matchRepository;
     private readonly IPredictionRepository _predictionRepository;
+    private readonly IIdentityAccountService _identityAccountService;
     private readonly ICurrentUserService _currentUserService;
     private readonly IUnitOfWork _unitOfWork;
 
     public PredictionService(
         IMatchRepository matchRepository,
         IPredictionRepository predictionRepository,
+        IIdentityAccountService identityAccountService,
         ICurrentUserService currentUserService,
         IUnitOfWork unitOfWork)
     {
         _matchRepository = matchRepository;
         _predictionRepository = predictionRepository;
+        _identityAccountService = identityAccountService;
         _currentUserService = currentUserService;
         _unitOfWork = unitOfWork;
     }
@@ -94,32 +97,26 @@ public class PredictionService : IPredictionService
         CancellationToken cancellationToken = default)
     {
         var userId = _currentUserService.GetRequiredUserId();
-        var predictions = await _predictionRepository.GetByUserIdAsync(userId, cancellationToken);
-        var matches = await _matchRepository.GetAllAsync(cancellationToken);
-        var matchesById = matches.ToDictionary(m => m.Id);
-
-        var items = predictions
-            .Where(p => matchesById.ContainsKey(p.MatchId))
-            .Select(p =>
-            {
-                var match = matchesById[p.MatchId];
-                return new MyPredictionItemDto
-                {
-                    MatchId = match.Id,
-                    HomeTeam = match.HomeTeam,
-                    AwayTeam = match.AwayTeam,
-                    PredictedHomeGoals = p.PredictedHomeGoals,
-                    PredictedAwayGoals = p.PredictedAwayGoals,
-                    OfficialHomeGoals = match.OfficialHomeGoals,
-                    OfficialAwayGoals = match.OfficialAwayGoals,
-                    PointsAwarded = p.PointsAwarded,
-                    KickoffUtc = match.KickoffUtc
-                };
-            })
-            .OrderByDescending(p => p.KickoffUtc)
-            .ToList();
-
+        var items = await BuildPredictionItemsAsync(userId, cancellationToken);
         return new MyPredictionsResponseDto { Predictions = items };
+    }
+
+    public async Task<UserPredictionsResponseDto> GetUserPredictionsAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default)
+    {
+        var user = await _identityAccountService.GetUserSummaryAsync(userId, cancellationToken);
+        if (user is null)
+            throw new DomainException("USER_NOT_FOUND", $"User with id {userId} was not found.");
+
+        var items = await BuildPredictionItemsAsync(userId, cancellationToken);
+
+        return new UserPredictionsResponseDto
+        {
+            UserId = user.UserId,
+            DisplayName = user.DisplayName,
+            Predictions = items
+        };
     }
 
     public async Task<int> RecalculatePointsForMatchAsync(
@@ -152,6 +149,36 @@ public class PredictionService : IPredictionService
         }
 
         return predictions.Count;
+    }
+
+    private async Task<IReadOnlyList<MyPredictionItemDto>> BuildPredictionItemsAsync(
+        Guid userId,
+        CancellationToken cancellationToken)
+    {
+        var predictions = await _predictionRepository.GetByUserIdAsync(userId, cancellationToken);
+        var matches = await _matchRepository.GetAllAsync(cancellationToken);
+        var matchesById = matches.ToDictionary(m => m.Id);
+
+        return predictions
+            .Where(p => matchesById.ContainsKey(p.MatchId))
+            .Select(p =>
+            {
+                var match = matchesById[p.MatchId];
+                return new MyPredictionItemDto
+                {
+                    MatchId = match.Id,
+                    HomeTeam = match.HomeTeam,
+                    AwayTeam = match.AwayTeam,
+                    PredictedHomeGoals = p.PredictedHomeGoals,
+                    PredictedAwayGoals = p.PredictedAwayGoals,
+                    OfficialHomeGoals = match.OfficialHomeGoals,
+                    OfficialAwayGoals = match.OfficialAwayGoals,
+                    PointsAwarded = p.PointsAwarded,
+                    KickoffUtc = match.KickoffUtc
+                };
+            })
+            .OrderByDescending(p => p.KickoffUtc)
+            .ToList();
     }
 
     private static void ValidateGoals(int homeGoals, int awayGoals)

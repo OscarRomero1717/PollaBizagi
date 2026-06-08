@@ -9,10 +9,16 @@
       </tr>
     </thead>
     <tbody>
-      @for (entry of entries; track entry.rank) {
-        <tr [class.is-current]="isCurrentUser(entry)">
+      @for (entry of entries; track entry.userId) {
+        <tr
+          [class.is-current]="isCurrentUser(entry)"
+          class="leaderboard-row"
+          [routerLink]="['/leaderboard/user', entry.userId]"
+        >
           <td data-label="#">{{ entry.rank }}</td>
-          <td data-label="Participante">{{ entry.displayName }}</td>
+          <td data-label="Participante">
+            <span class="participant-link">{{ entry.displayName }}</span>
+          </td>
           <td data-label="Puntos">{{ entry.totalPoints }}</td>
           <td data-label="Exactos">{{ entry.exactHits }}</td>
         </tr>

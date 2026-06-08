@@ -85,7 +85,7 @@ public class ExceptionHandlingMiddleware
         {
             "INVALID_CREDENTIALS" or "UNAUTHORIZED" => StatusCodes.Status401Unauthorized,
             "UNAUTHORIZED_RESOURCE" => StatusCodes.Status403Forbidden,
-            "MATCH_NOT_FOUND" or "PREDICTION_NOT_FOUND" => StatusCodes.Status404NotFound,
+            "MATCH_NOT_FOUND" or "PREDICTION_NOT_FOUND" or "USER_NOT_FOUND" => StatusCodes.Status404NotFound,
             "DUPLICATE_EMAIL" or "DUPLICATE_PREDICTION" => StatusCodes.Status409Conflict,
             "PREDICTION_WINDOW_CLOSED" => StatusCodes.Status422UnprocessableEntity,
             "INVALID_SCORE" or "INVALID_EMAIL" or "INVALID_PASSWORD" or "INVALID_DISPLAY_NAME" or "REGISTRATION_FAILED" => StatusCodes.Status400BadRequest,

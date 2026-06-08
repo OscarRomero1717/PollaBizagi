@@ -16,6 +16,10 @@ public interface IPredictionService
     Task<MyPredictionsResponseDto> GetMyPredictionsAsync(
         CancellationToken cancellationToken = default);
 
+    Task<UserPredictionsResponseDto> GetUserPredictionsAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default);
+
     Task<int> RecalculatePointsForMatchAsync(
         int matchId,
         CancellationToken cancellationToken = default);

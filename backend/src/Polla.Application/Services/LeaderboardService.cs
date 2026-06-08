@@ -28,6 +28,7 @@ public class LeaderboardService : ILeaderboardService
             .Select((participant, index) => new LeaderboardEntryDto
             {
                 Rank = index + 1,
+                UserId = participant.UserId,
                 DisplayName = participant.DisplayName,
                 TotalPoints = participant.TotalPoints,
                 ExactHits = participant.ExactHits

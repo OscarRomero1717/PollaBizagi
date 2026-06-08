@@ -13,6 +13,10 @@ public interface IIdentityAccountService
         string email,
         string password,
         CancellationToken cancellationToken = default);
+
+    Task<UserSummaryResult?> GetUserSummaryAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default);
 }
 
 public sealed class CreatedUserResult
@@ -33,4 +37,11 @@ public sealed class AuthenticatedUserResult
     public string DisplayName { get; init; } = string.Empty;
 
     public string Role { get; init; } = string.Empty;
+}
+
+public sealed class UserSummaryResult
+{
+    public Guid UserId { get; init; }
+
+    public string DisplayName { get; init; } = string.Empty;
 }

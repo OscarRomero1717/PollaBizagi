@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { LeaderboardEntry } from '../../../core/models/leaderboard.models';
 
 @Component({
   selector: 'app-leaderboard-table',
   standalone: true,
+  imports: [RouterLink],
   templateUrl: './leaderboard-table.component.html',
   styleUrl: './leaderboard-table.component.scss'
 })

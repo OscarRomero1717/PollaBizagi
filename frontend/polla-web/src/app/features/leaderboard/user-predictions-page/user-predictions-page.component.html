@@ -1,0 +1,39 @@
+<section class="user-predictions-page">
+  <header class="user-predictions-page__header">
+    <a class="back-link" routerLink="/leaderboard">← Volver al leaderboard</a>
+
+    <div class="user-predictions-page__title">
+      <h2>
+        @if (displayName) {
+          Predicciones de {{ displayName }}
+        } @else {
+          Historial del participante
+        }
+      </h2>
+      <p>Marcadores predichos y puntos obtenidos en cada partido.</p>
+    </div>
+
+    @if (predictions.length > 0) {
+      <div class="summary">
+        <span class="summary__label">Puntos totales</span>
+        <strong class="summary__value">{{ totalPoints }}</strong>
+      </div>
+    }
+  </header>
+
+  @if (loading) {
+    <p class="state">Cargando historial...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="state state--error">{{ errorMessage }}</p>
+  }
+
+  @if (!loading && !errorMessage && predictions.length === 0) {
+    <p class="state">Este participante aún no tiene predicciones registradas.</p>
+  }
+
+  @if (!loading && predictions.length > 0) {
+    <app-prediction-history-table [predictions]="predictions" />
+  }
+</section>

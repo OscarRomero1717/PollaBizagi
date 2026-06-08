@@ -79,4 +79,19 @@ public class IdentityAccountService : IIdentityAccountService
             Role = role
         };
     }
+
+    public async Task<UserSummaryResult?> GetUserSummaryAsync(
+        Guid userId,
+        CancellationToken cancellationToken = default)
+    {
+        var user = await _userManager.FindByIdAsync(userId.ToString());
+        if (user is null)
+            return null;
+
+        return new UserSummaryResult
+        {
+            UserId = user.Id,
+            DisplayName = user.DisplayName
+        };
+    }
 }
