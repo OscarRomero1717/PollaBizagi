@@ -11,11 +11,11 @@ Aplicación web fullstack para registro de predicciones deportivas, cálculo aut
 
 | Servicio | URL |
 |----------|-----|
-| **Frontend (Azure Static Web Apps)** | Ver en Azure Portal → Static Web App → *Overview* → **URL** |
+| **Frontend (Azure Static Web Apps)** | Ver en Azure Portal → Static Web App → https://ambitious-meadow-0965a6f0f.7.azurestaticapps.net/login |
 | **API (Render)** | `https://pollabizagi.onrender.com` |
 | **Base de datos** | Azure SQL — `PollaMundialista` |
 
-> La URL exacta del frontend la muestra Azure al crear la Static Web App (formato `https://<nombre>.azurestaticapps.net`).
+> https://ambitious-meadow-0965a6f0f.7.azurestaticapps.net/login
 
 ## Stack
 
@@ -116,8 +116,6 @@ PollaBizagi/
 | CORS producción | 038 | ✅ Completado |
 | README final | 039 | ✅ Completado |
 | Diagrama C4 | 040 | ✅ Completado |
-| AI_LOG final | 041 | ⏳ Pendiente |
-| Script de demo | 042 | ⏳ Pendiente |
 | SonarCloud | — | ✅ Configurado (activar token en GitHub) |
 
 ## Documentación
