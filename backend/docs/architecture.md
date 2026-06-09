@@ -99,13 +99,13 @@ flowchart TB
 
 ### Servicios Application y responsabilidades
 
-| Servicio | RF / UC | Responsabilidad |
+| Servicio | Responsabilidad |
 |----------|---------|-----------------|
-| `AuthService` | RF-01, RF-02 | Registro, login, emisión JWT |
-| `MatchService` | RF-04, RF-09 / UC-A02 | Listar partidos; publicar resultado oficial (Admin) |
-| `PredictionService` | RF-05–08 / UC-A03 | CRUD predicciones; recálculo de puntos |
-| `LeaderboardService` | RF-10 | Ranking agregado por usuario |
-| `ScoringCalculator` | RN-04 | Lógica pura 3 / 1 / 0 (Domain, sin EF) |
+| `AuthService` | Registro, login, emisión JWT |
+| `MatchService` |  Listar partidos; publicar resultado oficial (Admin) |
+| `PredictionService` |  CRUD predicciones; recálculo de puntos |
+| `LeaderboardService` |  Ranking agregado por usuario |
+| `ScoringCalculator` |  Lógica pura 3 / 1 / 0 (Domain, sin EF) |
 
 ---
 
@@ -186,15 +186,15 @@ sequenceDiagram
 
 ## 6. Endpoints principales
 
-| RF | Endpoint | Método | Rol |
-|----|----------|--------|-----|
-| RF-02 | `/api/auth/login` | POST | Anónimo |
-| RF-04 | `/api/matches` | GET | User, Admin |
-| RF-05 | `/api/predictions` | POST | User |
-| RF-06 | `/api/predictions/{id}` | PUT | User |
-| RF-07 | `/api/predictions/me` | GET | User, Admin |
-| RF-09 / UC-A02 | `/api/admin/matches/{id}/result` | PUT | Admin |
-| RF-10 | `/api/leaderboard` | GET | User, Admin |
+| Endpoint | Método | Rol |
+----------|--------|-----|
+| `/api/auth/login` | POST | Anónimo |
+| `/api/matches` | GET | User, Admin |
+| `/api/predictions` | POST | User |
+| `/api/predictions/{id}` | PUT | User |
+| `/api/predictions/me` | GET | User, Admin |
+| `/api/admin/matches/{id}/result` | PUT | Admin |
+| `/api/leaderboard` | GET | User, Admin |
 
 ---
 
@@ -207,7 +207,7 @@ sequenceDiagram
 
 ---
 
-## 8. Observabilidad (costo $0)
+## 8. Observabilidad 
 
 | Pieza | Implementación |
 |-------|----------------|
@@ -228,12 +228,11 @@ Detalle operativo: [docs/observability.md](../../docs/observability.md).
 | JWT (no cookies Identity) | API stateless; `AddIdentityCore` evita conflicto con Bearer |
 | API en Render (no App Service) | Cuota Azure App Service; Docker + env vars |
 | Frontend en Azure SWA | CI/CD desde GitHub; tier Free |
-| Recálculo síncrono en UC-A02 | MVP: volumen bajo (12 partidos, grupo privado) |
+| Recálculo síncrono en  | MVP: volumen bajo (12 partidos, grupo privado) |
 
 ---
 
 ## Referencias
 
 - [Base de datos](database.md)
-- [Azure SQL setup](azure-sql-setup.md)
 - [README raíz](../../README.md)

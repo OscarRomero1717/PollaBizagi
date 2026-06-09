@@ -1,4 +1,4 @@
-# Observabilidad — Polla Mundialista (costo $0)
+# Observabilidad — Polla Mundialista 
 
 Observabilidad pragmática para el MVP: logs estructurados, correlation ID y health checks.
 
@@ -6,14 +6,14 @@ Observabilidad pragmática para el MVP: logs estructurados, correlation ID y hea
 
 ## Componentes
 
-| Pieza | Tecnología | Costo | Dónde verlo |
-|-------|------------|-------|-------------|
-| Logs estructurados | Serilog → stdout | $0 | Render → **Logs** |
-| Correlation ID | `X-Correlation-Id` | $0 | Header HTTP + logs |
-| Request timing | Serilog request logging | $0 | Campo `Elapsed` en logs |
-| Liveness | `GET /health` | $0 | API pública |
-| Readiness (+ SQL) | `GET /health/ready` | $0 | API + Azure SQL |
-| Calidad estática | SonarCloud | $0 | Dashboard Sonar |
+| Pieza | Tecnología |  Dónde verlo |
+|-------|-------------------------|
+| Logs estructurados | Serilog → stdout |  Render → **Logs** |
+| Correlation ID | `X-Correlation-Id` |  Header HTTP + logs |
+| Request timing | Serilog request logging |  Campo `Elapsed` en logs |
+| Liveness | `GET /health` |  API pública |
+| Readiness (+ SQL) | `GET /health/ready` |  API + Azure SQL |
+| Calidad estática | SonarCloud |  Dashboard Sonar |
 
 ---
 
@@ -111,7 +111,7 @@ Invoke-RestMethod https://pollabizagi.onrender.com/health/ready
 
 ---
 
-## 4. SLIs sugeridos (sin herramienta extra)
+## 4. SLIs (sin herramienta extra)
 
 | SLI | Señal | Umbral orientativo MVP |
 |-----|-------|------------------------|
@@ -121,17 +121,6 @@ Invoke-RestMethod https://pollabizagi.onrender.com/health/ready
 
 ---
 
-## 5. Evolución futura (fase 2, sigue $0)
-
-| Paso | Herramienta |
-|------|-------------|
-| Uptime externo | UptimeRobot → ping `/health` |
-| Métricas + traces | OpenTelemetry → Grafana Cloud free |
-| Alertas | Render notifications / Grafana |
-
-Los logs JSON actuales ya son compatibles con ingestión OTLP/Loki sin cambiar el contrato de `X-Correlation-Id`.
-
----
 
 ## Archivos relevantes
 

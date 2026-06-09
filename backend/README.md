@@ -44,13 +44,13 @@ dotnet ef database update --project src/Polla.Infrastructure --startup-project s
 | `manual-api-test.ps1` | Smoke test E2E de endpoints |
 | `explore-database.sql` | Consultas para inspeccionar datos |
 
-## Azure SQL (Tarea 035)
+## Azure SQL
 
 1. Crear Azure SQL Database en Portal 
 2. Aplicar migraciones:
 
 ```powershell
-.\scripts\setup-azure-database.ps1 -ConnectionString "Server=tcp:TU_SERVIDOR.database.windows.net,1433;..."
+.\scripts\setup-azure-database.ps1 -ConnectionString 
 ```
 
 3. Ejecutar seed arrancando la API una vez con `ConnectionStrings__DefaultConnection` apuntando a Azure.

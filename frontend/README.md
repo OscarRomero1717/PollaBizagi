@@ -24,14 +24,4 @@ App local: `http://localhost:4200`
 | `src/environments/environment.ts` | `http://localhost:5299` (desarrollo) |
 | `src/environments/environment.prod.ts` | `https://pollabizagi.onrender.com` (producción) |
 
-## Estado
 
-- ✅ Tarea 027 — Proyecto Angular + environments
-- ✅ Tarea 028 — Core auth (models, AuthService, interceptor, guards)
-- ✅ Tarea 029 — Pantallas Login y Register
-- ✅ Tarea 030 — App shell y navegación
-- ✅ Tarea 031 — MatchesPage con predicciones
-- ✅ Tarea 032 — MyPredictionsPage
-- ✅ Tarea 033 — LeaderboardPage
-- ✅ Tarea 034 — AdminResultsPage
-- ⏳ Tarea 037 — Deploy Azure Static Web Apps (ver [docs/azure-swa-setup.md](docs/azure-swa-setup.md))

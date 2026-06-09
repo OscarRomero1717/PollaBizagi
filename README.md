@@ -128,7 +128,7 @@ PollaBizagi/
 | [backend/docs/database.md](backend/docs/database.md) | Modelo de datos y tablas |
 | [backend/AI_LOG.md](backend/AI_LOG.md) | Registro de uso de IA en el desarrollo |
 | [docs/sonarcloud-setup.md](docs/sonarcloud-setup.md) | Análisis de calidad con SonarCloud |
-| [docs/observability.md](docs/observability.md) | Logs, correlation ID y health checks ($0) |
+| [docs/observability.md](docs/observability.md) | Logs, correlation ID y health checks  |
 
 ## Licencia
 
